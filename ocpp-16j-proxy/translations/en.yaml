@@ -1,0 +1,28 @@
+configuration:
+  upstream_url:
+    name: Upstream OCPP URL
+    description: Central-system ws:// or wss:// URL. The charger path is appended unless {charge_point_id} is present.
+  log_level:
+    name: Log level
+    description: Minimum level written to the app log.
+  max_message_size:
+    name: Maximum message size
+    description: Maximum accepted WebSocket message size in bytes.
+  ping_interval:
+    name: Ping interval
+    description: Seconds between WebSocket keepalive pings.
+  ping_timeout:
+    name: Ping timeout
+    description: Seconds to wait for a keepalive response.
+  open_timeout:
+    name: Upstream connection timeout
+    description: Seconds allowed for opening the central-system connection.
+  forward_authorization:
+    name: Forward charger authorization
+    description: Forward the incoming charger Authorization header upstream.
+  upstream_authorization:
+    name: Fixed upstream authorization
+    description: Optional Authorization value that replaces the charger header.
+network:
+  9000/tcp: OCPP 1.6J WebSocket listener
+

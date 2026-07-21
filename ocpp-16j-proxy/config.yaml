@@ -1,0 +1,33 @@
+name: OCPP 1.6J Proxy
+version: "0.1.0"
+slug: ocpp_16j_proxy
+description: Transparent OCPP 1.6J WebSocket proxy with correlated JSON logging
+stage: experimental
+startup: services
+boot: auto
+init: false
+arch:
+  - amd64
+  - aarch64
+ports:
+  "9000/tcp": 9000
+ports_description:
+  "9000/tcp": OCPP 1.6J WebSocket listener
+options:
+  upstream_url: "wss://ocpp.circlelink.app"
+  log_level: INFO
+  max_message_size: 1048576
+  ping_interval: 20.0
+  ping_timeout: 20.0
+  open_timeout: 10.0
+  forward_authorization: true
+schema:
+  upstream_url: "match(^wss?://.+$)"
+  log_level: "list(DEBUG|INFO|WARNING|ERROR)"
+  max_message_size: "int(1024,)"
+  ping_interval: "float(1,)"
+  ping_timeout: "float(1,)"
+  open_timeout: "float(1,)"
+  forward_authorization: bool
+  upstream_authorization: password?
+
